@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MECO Admin</title>
+</head>
+<body>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "MonyCoin/meco-web",
+          branch: "main",
+          base_url: "https://mecoweb.netlify.app",
+          auth_endpoint: "api/auth"
+        },
+        media_folder: "assets/images",
+        public_folder: "/assets/images",
+        collections: [{
+          name: "blog",
+          label: "Blog",
+          folder: "_posts",
+          create: true,
+          slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+          fields: [
+            { label: "Title (Ar)", name: "title_ar", widget: "string" },
+            { label: "Title (En)", name: "title_en", widget: "string" },
+            { label: "Publish Date", name: "date", widget: "datetime" },
+            { label: "Body (Ar)", name: "body_ar", widget: "markdown" },
+            { label: "Body (En)", name: "body_en", widget: "markdown" },
+            { label: "Tags", name: "tags", widget: "list", default: ["أخبار"] }
+          ]
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
