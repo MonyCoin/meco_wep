@@ -2,8 +2,9 @@ backend:
   name: github
   repo: MonyCoin/meco-web
   branch: main
-  base_url: https://monycoin.github.io
+  base_url: https://mecoweb.netlify.app
   auth_endpoint: api/auth
+  site_domain: mecoweb.netlify.app
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
