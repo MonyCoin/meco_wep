@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدونة MECO — آخر الأخبار والمقالات</title>
+    <meta name="description" content="آخر أخبار ومقالات مشروع MECO. تابع أحدث التحديثات والإعلانات الرسمية.">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/icon.png">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #8B85FF;
+            --bg: #0A0A0F;
+            --surface: #1A1A2E;
+            --surface-light: #222240;
+            --text: #FFFFFF;
+            --text-secondary: #A0A0B0;
+            --gold: #FFD700;
+            --success: #10B981;
+            --border: #2A2A3E;
+            --radius: 16px;
+            --max-width: 900px;
+            --font-ar: 'Tajawal', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFD;
+            --surface: #FFFFFF;
+            --surface-light: #F0F2F5;
+            --text: #1A1A2E;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        header .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { width: 42px; height: 42px; border-radius: 12px; }
+        .logo span { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+        .logo span b { color: var(--primary); }
+        nav { display: flex; align-items: center; gap: 24px; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: var(--primary); }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); }
+        .btn-primary { background: var(--primary); color: #FFF; }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+        .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; }
+
+        .page-hero { padding: 80px 0 40px; text-align: center; }
+        .page-hero h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 12px; }
+        .page-hero h1 span { color: var(--primary); }
+        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(108,99,255,0.1); }
+        .blog-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; }
+        .blog-card h2 { font-size: 1.3rem; margin-bottom: 10px; }
+        .blog-card h2 a { color: var(--text); text-decoration: none; }
+        .blog-card h2 a:hover { color: var(--primary); }
+        .blog-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+        .blog-tag { display: inline-block; background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-left: 8px; }
+
+        .pagination { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+        .pagination span { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); }
+        .pagination .current { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+        footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; }
+        footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
+        footer .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.2s; text-decoration: none; }
+        footer .social-links a:hover { color: var(--primary); }
+        footer p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--surface); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); }
+            nav.open { display: flex; }
+            .mobile-menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/icon.png" alt="MECO Logo">
+                <span>MECO<b>Wallet</b></span>
+            </a>
+            <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">عن المشروع</a>
+                <a href="token.html">العملة</a>
+                <a href="wallet.html">المحفظة</a>
+                <a href="roadmap.html">خارطة الطريق</a>
+                <a href="blog.html" class="active">المدونة</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <a href="https://monycoin.github.io/meco_wallet-app/" class="btn btn-primary">⬇️ تحميل</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>📰 <span>المدونة</span></h1>
+            <p>آخر الأخبار والتحديثات الرسمية لمشروع MECO</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section>
+        <div class="container">
+            <!-- Post 1 -->
+            <article class="blog-card">
+                <p class="blog-date">📅 24 أبريل 2026</p>
+                <h2><a href="#">إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
+                <p>يسرنا الإعلان عن إطلاق الإصدار 1.12.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
+                <span class="blog-tag">إصدارات</span>
+                <span class="blog-tag">تحديثات</span>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card">
+                <p class="blog-date">📅 15 أبريل 2026</p>
+                <h2><a href="#">تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم</a></h2>
+                <p>في إطار الشفافية الكاملة، تم تحديث المحافظ الرسمية للمشروع. تم إضافة محفظة تحصيل الرسوم (Fee Collection Wallet) بعنوان جديد، وتحديث عناوين محفظتي التطوير والمجتمع. تم توثيق جميع العناوين في مستودع meco-token على GitHub.</p>
+                <span class="blog-tag">حوكمة</span>
+                <span class="blog-tag">شفافية</span>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card">
+                <p class="blog-date">📅 1 أبريل 2026</p>
+                <h2><a href="#">انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana</a></h2>
+                <p>بعد أشهر من التطوير والاختبار، يسر مؤسسة MonyCoin للتطوير الرقمي الإعلان عن الإطلاق الرسمي لتطبيق MECO Wallet. التطبيق متاح للتحميل بصيغة APK، ويدعم إنشاء المحافظ، الإرسال والاستلام، وعرض الأسعار الحية.</p>
+                <span class="blog-tag">إعلانات</span>
+                <span class="blog-tag">إطلاق</span>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card">
+                <p class="blog-date">📅 20 مارس 2026</p>
+                <h2><a href="#">إكمال التوكنوميكس وتوزيع المحافظ الخمسة</a></h2>
+                <p>تم الانتهاء من تنفيذ خطة التوكنوميكس بشكل كامل: توزيع 1 مليار MECO على خمس محافظ مستقلة (السيولة 50%، التطوير 20%، الخزينة 10%، الفريق 10%، المجتمع 10%)، مع إغلاق صلاحيات السك والتجميد نهائياً.</p>
+                <span class="blog-tag">توكنوميكس</span>
+                <span class="blog-tag">تأسيس</span>
+            </article>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="current">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>← التالي</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://x.com/MoniCoinMECO" target="_blank">𝕏</a>
+                <a href="https://t.me/monycoin1" target="_blank">✈️</a>
+                <a href="https://github.com/MonyCoin" target="_blank">🐙</a>
+                <a href="https://www.facebook.com/share/1ZUbCbssCU/" target="_blank">📘</a>
+            </div>
+            <p>© 2026 — MECO Project — مؤسسة MonyCoin للتطوير الرقمي</p>
+            <p style="margin-top:4px;">المؤسس: محمد سعادة</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>
