@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: MonyCoin/meco-web
+  branch: main
+  base_url: https://monycoin.github.io
+  auth_endpoint: api/auth
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title (Ar)", name: "title_ar", widget: "string" }
+      - { label: "Title (En)", name: "title_en", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body (Ar)", name: "body_ar", widget: "markdown" }
+      - { label: "Body (En)", name: "body_en", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["أخبار"] }
