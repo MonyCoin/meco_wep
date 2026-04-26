@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MECO — المنظومة المالية الرقمية المتكاملة</title>
-    <meta name="description" content="MECO Wallet هي أول محفظة عربية لا مركزية على شبكة Solana. حسابات متعددة، تبادل فوري، تخزين للعوائد، وربط آمن بتطبيقات Web3.">
+    <title>مدونة MECO — آخر الأخبار والمقالات</title>
+    <meta name="description" content="آخر أخبار ومقالات مشروع MECO. تابع أحدث التحديثات والإعلانات الرسمية.">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/icon.png">
     <style>
         :root {
@@ -17,12 +17,10 @@
             --text-secondary: #A0A0B0;
             --gold: #FFD700;
             --success: #10B981;
-            --error: #EF4444;
             --border: #2A2A3E;
             --radius: 16px;
-            --max-width: 1200px;
+            --max-width: 900px;
             --font-ar: 'Tajawal', sans-serif;
-            --font-en: 'Inter', sans-serif;
         }
 
         [data-theme="light"] {
@@ -35,85 +33,59 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: var(--font-ar);
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.8;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
-        /* Header */
         header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             padding: 16px 0;
         }
-
         header .container { display: flex; align-items: center; justify-content: space-between; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo img { width: 42px; height: 42px; border-radius: 12px; }
         .logo span { font-size: 1.4rem; font-weight: 800; color: var(--text); }
         .logo span b { color: var(--primary); }
-
         nav { display: flex; align-items: center; gap: 24px; }
         nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
         nav a:hover, nav a.active { color: var(--primary); }
-
         .header-actions { display: flex; align-items: center; gap: 12px; }
         .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); }
         .btn-primary { background: var(--primary); color: #FFF; }
         .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: #FFF; }
         .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; }
 
-        /* Hero */
-        .hero { padding: 100px 0 80px; text-align: center; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #FFF; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; margin-bottom: 24px; }
-        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 16px; line-height: 1.3; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 32px; }
-        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .page-hero { padding: 80px 0 40px; text-align: center; }
+        .page-hero h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 12px; }
+        .page-hero h1 span { color: var(--primary); }
+        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; }
 
-        /* Sections */
-        section { padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 48px; }
-        .section-title h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; }
-        .section-title h2 span { color: var(--primary); }
-        .section-title p { color: var(--text-secondary); font-size: 1.05rem; }
+        .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(108,99,255,0.1); }
+        .blog-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; }
+        .blog-card h2 { font-size: 1.3rem; margin-bottom: 10px; }
+        .blog-card h2 a { color: var(--text); text-decoration: none; }
+        .blog-card h2 a:hover { color: var(--primary); }
+        .blog-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+        .blog-tag { display: inline-block; background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-left: 8px; }
 
-        /* Features Grid */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 24px; }
-        .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; transition: transform 0.2s, box-shadow 0.2s; }
-        .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(108,99,255,0.1); }
-        .feature-icon { width: 56px; height: 56px; background: var(--primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; }
-        .feature-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
-        .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* Transparency */
-        .transparency { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; text-align: center; }
-        .transparency h3 { font-size: 1.4rem; margin-bottom: 16px; }
-        .transparency p { color: var(--text-secondary); max-width: 700px; margin: 0 auto 24px; }
-        .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .badge { background: var(--surface-light); border: 1px solid var(--border); padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
-
-        /* Footer */
-        footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+        footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; }
         footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
         footer .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.2s; text-decoration: none; }
         footer .social-links a:hover { color: var(--primary); }
         footer p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        /* Mobile Nav */
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
-
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .page-hero h1 { font-size: 2rem; }
             nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--surface); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); }
             nav.open { display: flex; }
             .mobile-menu-btn { display: block; }
@@ -130,12 +102,12 @@
             </a>
             <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
             <nav>
-                <a href="index.html" class="active">الرئيسية</a>
+                <a href="index.html">الرئيسية</a>
                 <a href="about.html">عن المشروع</a>
                 <a href="token.html">العملة</a>
                 <a href="wallet.html">المحفظة</a>
                 <a href="roadmap.html">خارطة الطريق</a>
-                <a href="blog.html">المدونة</a>
+                <a href="blog.html" class="active">المدونة</a>
                 <a href="contact.html">اتصل بنا</a>
             </nav>
             <div class="header-actions">
@@ -146,63 +118,58 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="page-hero">
         <div class="container">
-            <div class="hero-badge">🚀 الإصدار v1.11.0 — يعمل الآن على Solana</div>
-            <h1><span>MECO Wallet</span> — أول محفظة عربية<br>على شبكة Solana</h1>
-            <p>ليست مجرد محفظة. إنها منصتك المالية المتكاملة. حسابات متعددة، تبادل فوري، تخزين للعوائد، وربط آمن بتطبيقات Web3 — كل ذلك في تطبيق واحد.</p>
-            <div class="hero-buttons">
-                <a href="https://monycoin.github.io/meco_wallet-app/" class="btn btn-primary">⬇️ تحميل التطبيق</a>
-                <a href="about.html" class="btn btn-outline">📖 استكشف المشروع</a>
-            </div>
+            <h1>📰 <span>المدونة</span></h1>
+            <p>آخر الأخبار والتحديثات الرسمية لمشروع MECO</p>
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- Blog Posts (Static) -->
     <section>
         <div class="container">
-            <div class="section-title">
-                <h2>لماذا <span>MECO Wallet</span>؟</h2>
-                <p>ميزات فريدة تجعلها أكثر من مجرد محفظة رقمية</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>حسابات متعددة</h3>
-                    <p>أنشئ عدة محافظ داخل التطبيق، لكل منها رصيدها وسجل معاملاتها المستقل. وكأنك تمتلك عدة محافظ في جهاز واحد.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>تبادل فوري (Swap)</h3>
-                    <p>بدّل بين 16 عملة رقمية بأفضل الأسعار عبر Jupiter. رسوم خدمة شفافة تُعاد لدعم المنظومة.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>تخزين للعوائد (Staking)</h3>
-                    <p>أودع MECO واكسب عوائد تصل إلى 40% سنوياً. اختر بين خطط مرنة أو مقفلة تناسب استراتيجيتك.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>ربط Web3 آمن</h3>
-                    <p>اربط محفظتك بمئات التطبيقات اللامركزية (dApps) عبر WalletConnect بمسح رمز QR بسيط.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- أضف المقالات الجديدة هنا بنفس التنسيق أدناه -->
 
-    <!-- Transparency -->
-    <section>
-        <div class="container">
-            <div class="transparency">
-                <h3>🔐 شفافية كاملة — لأن الثقة تُبنى على الوضوح</h3>
-                <p>جميع محافظ المشروع معلنة ويمكن تتبعها على السلسلة. العقد غير قابل للتعديل، وصلاحيات السك والتجميد ملغاة نهائياً.</p>
-                <div class="badges">
-                    <span class="badge">🔒 Mint: ❌</span>
-                    <span class="badge">🛑 Freeze: ❌</span>
-                    <span class="badge">📜 العقد: غير قابل للتعديل</span>
-                    <span class="badge">🔗 Solscan</span>
-                </div>
-            </div>
+            <article class="blog-card">
+                <p class="blog-date">📅 26 أبريل 2026</p>
+                <h2><a href="#">مرحبًا بالعالم – أول مقال تجريبي</a></h2>
+                <p>هذا هو مقالي الأول على مدونة MECO. يمكنني الآن إضافة أي مقال جديد ببساطة عن طريق نسخ هذا الصندوق وتعديله.</p>
+                <span class="blog-tag">أخبار</span>
+                <span class="blog-tag">ترحيب</span>
+            </article>
+
+            <article class="blog-card">
+                <p class="blog-date">📅 24 أبريل 2026</p>
+                <h2><a href="#">إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
+                <p>يسرنا الإعلان عن إطلاق الإصدار 1.12.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
+                <span class="blog-tag">إصدارات</span>
+                <span class="blog-tag">تحديثات</span>
+            </article>
+
+            <article class="blog-card">
+                <p class="blog-date">📅 15 أبريل 2026</p>
+                <h2><a href="#">تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم</a></h2>
+                <p>في إطار الشفافية الكاملة، تم تحديث المحافظ الرسمية للمشروع. تم إضافة محفظة تحصيل الرسوم (Fee Collection Wallet) بعنوان جديد، وتحديث عناوين محفظتي التطوير والمجتمع. تم توثيق جميع العناوين في مستودع meco-token على GitHub.</p>
+                <span class="blog-tag">حوكمة</span>
+                <span class="blog-tag">شفافية</span>
+            </article>
+
+            <article class="blog-card">
+                <p class="blog-date">📅 1 أبريل 2026</p>
+                <h2><a href="#">انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana</a></h2>
+                <p>بعد أشهر من التطوير والاختبار، يسر مؤسسة MonyCoin للتطوير الرقمي الإعلان عن الإطلاق الرسمي لتطبيق MECO Wallet. التطبيق متاح للتحميل بصيغة APK، ويدعم إنشاء المحافظ، الإرسال والاستلام، وعرض الأسعار الحية.</p>
+                <span class="blog-tag">إعلانات</span>
+                <span class="blog-tag">إطلاق</span>
+            </article>
+
+            <article class="blog-card">
+                <p class="blog-date">📅 20 مارس 2026</p>
+                <h2><a href="#">إكمال التوكنوميكس وتوزيع المحافظ الخمسة</a></h2>
+                <p>تم الانتهاء من تنفيذ خطة التوكنوميكس بشكل كامل: توزيع 1 مليار MECO على خمس محافظ مستقلة (السيولة 50%، التطوير 20%، الخزينة 10%، الفريق 10%، المجتمع 10%)، مع إغلاق صلاحيات السك والتجميد نهائياً.</p>
+                <span class="blog-tag">توكنوميكس</span>
+                <span class="blog-tag">تأسيس</span>
+            </article>
+
         </div>
     </section>
 
