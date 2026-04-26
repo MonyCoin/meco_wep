@@ -49,26 +49,32 @@
             position: sticky; top: 0; z-index: 100;
             background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            padding: 16px 0;
+            padding: 12px 0;
         }
 
-        header .container { display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
+
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
         .logo img { width: 42px; height: 42px; border-radius: 12px; }
         .logo span { font-size: 1.4rem; font-weight: 800; color: var(--text); }
         .logo span b { color: var(--primary); }
 
         nav { display: flex; align-items: center; gap: 24px; }
-        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; white-space: nowrap; }
         nav a:hover, nav a.active { color: var(--primary); }
 
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); }
+        .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); white-space: nowrap; }
         .btn-primary { background: var(--primary); color: #FFF; }
         .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
         .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
         .btn-outline:hover { background: var(--primary); color: #FFF; }
-        .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; }
+        .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; flex-shrink: 0; }
 
         .hero { padding: 100px 0 80px; text-align: center; }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #FFF; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; margin-bottom: 24px; }
@@ -106,11 +112,21 @@
         footer .social-links a:hover { color: var(--primary); }
         footer p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.8rem; cursor: pointer; padding: 8px; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
-            nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--surface); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); }
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+            }
             nav.open { display: flex; }
             .mobile-menu-btn { display: block; }
             .screenshots-preview { grid-template-columns: 1fr; }
