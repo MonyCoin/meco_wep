@@ -26,7 +26,6 @@
         [data-theme="light"] {
             --bg: #F8FAFD;
             --surface: #FFFFFF;
-            --surface-light: #F0F2F5;
             --text: #1A1A2E;
             --text-secondary: #6B7280;
             --border: #E5E7EB;
@@ -46,8 +45,7 @@
         header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 16px 0;
+            border-bottom: 1px solid var(--border); padding: 16px 0;
         }
         header .container { display: flex; align-items: center; justify-content: space-between; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -55,10 +53,10 @@
         .logo span { font-size: 1.4rem; font-weight: 800; color: var(--text); }
         .logo span b { color: var(--primary); }
         nav { display: flex; align-items: center; gap: 24px; }
-        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.2s; }
         nav a:hover, nav a.active { color: var(--primary); }
         .header-actions { display: flex; align-items: center; gap: 12px; }
-        .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); }
+        .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: var(--font-ar); }
         .btn-primary { background: var(--primary); color: #FFF; }
         .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
         .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; }
@@ -68,18 +66,18 @@
         .page-hero h1 span { color: var(--primary); }
         .page-hero p { color: var(--text-secondary); font-size: 1.1rem; }
 
-        .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(108,99,255,0.1); }
+        .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
         .blog-date { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; }
         .blog-card h2 { font-size: 1.3rem; margin-bottom: 10px; }
         .blog-card h2 a { color: var(--text); text-decoration: none; }
         .blog-card h2 a:hover { color: var(--primary); }
         .blog-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
-        .blog-tag { display: inline-block; background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-left: 8px; }
 
-        .pagination { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
-        .pagination span { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); }
-        .pagination .current { background: var(--primary); color: #FFF; border-color: var(--primary); }
+        .blog-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+        .blog-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .blog-tag { background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; }
+        .share-btn { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: var(--font-ar); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+        .share-btn:hover { border-color: var(--primary); color: var(--primary); }
 
         footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; }
         footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
@@ -101,7 +99,7 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/icon.png" alt="MECO Logo">
+                <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/icon.png" alt="Logo">
                 <span>MECO<b>Wallet</b></span>
             </a>
             <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
@@ -121,7 +119,6 @@
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="page-hero">
         <div class="container">
             <h1>📰 <span>المدونة</span></h1>
@@ -129,67 +126,97 @@
         </div>
     </section>
 
-    <article class="blog-card">
-    <p class="blog-date">📅 26 أبريل 2026</p>
-    <h2><a href="#">ثورة في عالم الـ Web3: كيف حطم "محمد سعادة" قيود البرمجة وأسس منظومة "MECO Wallet" من شاشة هاتف محمول؟</a></h2>
-    <p>في عالم التكنولوجيا المتقدمة والبلوكشين، هناك أسطورة شائعة يرددها خبراء وادي السيليكون: "لبناء تطبيق لامركزي (Web3) متكامل، أنت بحاجة إلى فريق ضخم من المطورين، وميزانيات بملايين الدولارات، وأجهزة حاسوب فائقة التطور". لكن من وسط هذه القواعد الصارمة، ظهر مشروع يكسر كل هذه المفاهيم ويُعيد صياغة قواعد اللعبة التقنية بالكامل؛ إنه مشروع MECO Wallet.</p>
-    <p>خلف هذا الإنجاز يقف رجل واحد، محمد سعادة (المدير التنفيذي والمطور لمشروع MECO)، الذي قرر أن يثبت للعالم أن كلمة "مستحيل" لا تسكن إلا في عقول أولئك الذين يجهلون قيمة أنفسهم.</p>
-    <p>تطبيق MECO Wallet ليس مجرد محفظة رقمية عادية، بل هو بوابة عبور سلسة نحو عالم الكريبتو. بمجرد أن يفتح المستخدم التطبيق وينشئ محفظته الأولى، يجد نفسه أمام تجربة مستخدم (UX) فائقة النعومة: نظام محافظ متعددة، سرعة فائقة في الإرسال والمبادلة، شاشة سوق حية، ومتصفح Web3 مدمج.</p>
-    <p>القصة الحقيقية التي ستذهل مجتمع المطورين ليست في "ماذا" تم بناؤه، بل في "كيف" تم بناؤه. لم يُبنَ هذا المشروع الضخم داخل مختبرات تقنية مكيفة، بل وُلد من رحم بيئة ضيقة جداً عبر تطبيق (Termux)، وبواسطة هاتف محمول محدود الإمكانيات. لقد تحدى "محمد سعادة" الإمكانيات المعدومة، وتغلب على قيود الأجهزة، وصنع منصة تضاهي أكبر محافظ الكريبتو العالمية.</p>
-    <p>اليوم، MECO Wallet تقف كحقيقة ساطعة كالشمس؛ رمز رقمي، وتطبيق فعّال، ومشروع ينبض بالحياة ويبني مجتمعاً يكبر يوماً بعد يوم. إنها ليست مجرد قصة نجاح لعملة رقمية، بل هي رسالة لكل حالم بأن الشغف والإصرار هما رأس المال الحقيقي في عالم الابتكار.</p>
-    <span class="blog-tag">رؤية</span>
-    <span class="blog-tag">إنجازات</span>
-    <span class="blog-tag">Web3</span>
-    </article><!-- Blog Posts -->
     <section>
         <div class="container">
-            <!-- Post 1 -->
+
+            <!-- مقال 1: ثورة Web3 -->
+            <article class="blog-card">
+                <p class="blog-date">📅 26 أبريل 2026</p>
+                <h2><a href="#">ثورة في عالم الـ Web3: كيف حطم "محمد سعادة" قيود البرمجة وأسس منظومة "MECO Wallet" من شاشة هاتف محمول؟</a></h2>
+                <p>في عالم التكنولوجيا المتقدمة والبلوكشين، هناك أسطورة شائعة يرددها خبراء وادي السيليكون: "لبناء تطبيق لامركزي (Web3) متكامل، أنت بحاجة إلى فريق ضخم من المطورين، وميزانيات بملايين الدولارات، وأجهزة حاسوب فائقة التطور". لكن من وسط هذه القواعد الصارمة، ظهر مشروع يكسر كل هذه المفاهيم ويُعيد صياغة قواعد اللعبة التقنية بالكامل؛ إنه مشروع MECO Wallet.</p>
+                <p>خلف هذا الإنجاز يقف رجل واحد، محمد سعادة (المدير التنفيذي والمطور لمشروع MECO)، الذي قرر أن يثبت للعالم أن كلمة "مستحيل" لا تسكن إلا في عقول أولئك الذين يجهلون قيمة أنفسهم.</p>
+                <p>تطبيق MECO Wallet ليس مجرد محفظة رقمية عادية، بل هو بوابة عبور سلسة نحو عالم الكريبتو. بمجرد أن يفتح المستخدم التطبيق وينشئ محفظته الأولى، يجد نفسه أمام تجربة مستخدم (UX) فائقة النعومة: نظام محافظ متعددة، سرعة فائقة في الإرسال والمبادلة، شاشة سوق حية، ومتصفح Web3 مدمج.</p>
+                <p>القصة الحقيقية التي ستذهل مجتمع المطورين ليست في "ماذا" تم بناؤه، بل في "كيف" تم بناؤه. لم يُبنَ هذا المشروع الضخم داخل مختبرات تقنية مكيفة، بل وُلد من رحم بيئة ضيقة جداً عبر تطبيق (Termux)، وبواسطة هاتف محمول محدود الإمكانيات. لقد تحدى "محمد سعادة" الإمكانيات المعدومة، وتغلب على قيود الأجهزة، وصنع منصة تضاهي أكبر محافظ الكريبتو العالمية.</p>
+                <p>اليوم، MECO Wallet تقف كحقيقة ساطعة كالشمس؛ رمز رقمي، وتطبيق فعّال، ومشروع ينبض بالحياة ويبني مجتمعاً يكبر يوماً بعد يوم. إنها ليست مجرد قصة نجاح لعملة رقمية، بل هي رسالة لكل حالم بأن الشغف والإصرار هما رأس المال الحقيقي في عالم الابتكار.</p>
+                <div class="blog-footer">
+                    <div class="blog-tags">
+                        <span class="blog-tag">رؤية</span>
+                        <span class="blog-tag">إنجازات</span>
+                        <span class="blog-tag">Web3</span>
+                    </div>
+                    <button class="share-btn" onclick="sharePost('ثورة في عالم الـ Web3: كيف حطم محمد سعادة قيود البرمجة وأسس منظومة MECO Wallet من شاشة هاتف محمول؟')">
+                        📤 مشاركة
+                    </button>
+                </div>
+            </article>
+
+            <!-- مقال 2: إطلاق الإصدار -->
             <article class="blog-card">
                 <p class="blog-date">📅 24 أبريل 2026</p>
                 <h2><a href="#">إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
                 <p>يسرنا الإعلان عن إطلاق الإصدار 1.12.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
-                <span class="blog-tag">إصدارات</span>
-                <span class="blog-tag">تحديثات</span>
+                <div class="blog-footer">
+                    <div class="blog-tags">
+                        <span class="blog-tag">إصدارات</span>
+                        <span class="blog-tag">تحديثات</span>
+                    </div>
+                    <button class="share-btn" onclick="sharePost('إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة')">
+                        📤 مشاركة
+                    </button>
+                </div>
             </article>
 
-            <!-- Post 2 -->
+            <!-- مقال 3: تحديث المحافظ -->
             <article class="blog-card">
                 <p class="blog-date">📅 15 أبريل 2026</p>
                 <h2><a href="#">تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم</a></h2>
                 <p>في إطار الشفافية الكاملة، تم تحديث المحافظ الرسمية للمشروع. تم إضافة محفظة تحصيل الرسوم (Fee Collection Wallet) بعنوان جديد، وتحديث عناوين محفظتي التطوير والمجتمع. تم توثيق جميع العناوين في مستودع meco-token على GitHub.</p>
-                <span class="blog-tag">حوكمة</span>
-                <span class="blog-tag">شفافية</span>
+                <div class="blog-footer">
+                    <div class="blog-tags">
+                        <span class="blog-tag">حوكمة</span>
+                        <span class="blog-tag">شفافية</span>
+                    </div>
+                    <button class="share-btn" onclick="sharePost('تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم')">
+                        📤 مشاركة
+                    </button>
+                </div>
             </article>
 
-            <!-- Post 3 -->
+            <!-- مقال 4: انطلاق التطبيق -->
             <article class="blog-card">
                 <p class="blog-date">📅 1 أبريل 2026</p>
                 <h2><a href="#">انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana</a></h2>
                 <p>بعد أشهر من التطوير والاختبار، يسر مؤسسة MonyCoin للتطوير الرقمي الإعلان عن الإطلاق الرسمي لتطبيق MECO Wallet. التطبيق متاح للتحميل بصيغة APK، ويدعم إنشاء المحافظ، الإرسال والاستلام، وعرض الأسعار الحية.</p>
-                <span class="blog-tag">إعلانات</span>
-                <span class="blog-tag">إطلاق</span>
+                <div class="blog-footer">
+                    <div class="blog-tags">
+                        <span class="blog-tag">إعلانات</span>
+                        <span class="blog-tag">إطلاق</span>
+                    </div>
+                    <button class="share-btn" onclick="sharePost('انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana')">
+                        📤 مشاركة
+                    </button>
+                </div>
             </article>
 
-            <!-- Post 4 -->
+            <!-- مقال 5: التوكنوميكس -->
             <article class="blog-card">
                 <p class="blog-date">📅 20 مارس 2026</p>
                 <h2><a href="#">إكمال التوكنوميكس وتوزيع المحافظ الخمسة</a></h2>
                 <p>تم الانتهاء من تنفيذ خطة التوكنوميكس بشكل كامل: توزيع 1 مليار MECO على خمس محافظ مستقلة (السيولة 50%، التطوير 20%، الخزينة 10%، الفريق 10%، المجتمع 10%)، مع إغلاق صلاحيات السك والتجميد نهائياً.</p>
-                <span class="blog-tag">توكنوميكس</span>
-                <span class="blog-tag">تأسيس</span>
+                <div class="blog-footer">
+                    <div class="blog-tags">
+                        <span class="blog-tag">توكنوميكس</span>
+                        <span class="blog-tag">تأسيس</span>
+                    </div>
+                    <button class="share-btn" onclick="sharePost('إكمال التوكنوميكس وتوزيع المحافظ الخمسة')">
+                        📤 مشاركة
+                    </button>
+                </div>
             </article>
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <span class="current">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>← التالي</span>
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
@@ -208,6 +235,25 @@
             const html = document.documentElement;
             const current = html.getAttribute('data-theme');
             html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function sharePost(title) {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: title + ' - MECO Wallet Blog',
+                    url: url
+                }).catch(() => {});
+            } else {
+                // Fallback: نسخ الرابط للحافظة
+                const fullText = title + '\n' + url;
+                navigator.clipboard.writeText(fullText).then(() => {
+                    alert('تم نسخ الرابط إلى الحافظة');
+                }).catch(() => {
+                    prompt('انسخ الرابط للمشاركة:', fullText);
+                });
+            }
         }
     </script>
 </body>
