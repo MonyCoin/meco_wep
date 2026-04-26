@@ -77,6 +77,10 @@
         .blog-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
         .blog-tag { display: inline-block; background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-left: 8px; }
 
+        .pagination { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+        .pagination span { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); }
+        .pagination .current { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
         footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; }
         footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
         footer .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.2s; text-decoration: none; }
@@ -125,27 +129,19 @@
         </div>
     </section>
 
-    <!-- Blog Posts (Static) -->
+    <!-- Blog Posts -->
     <section>
         <div class="container">
-            <!-- أضف المقالات الجديدة هنا بنفس التنسيق أدناه -->
-
-            <article class="blog-card">
-                <p class="blog-date">📅 26 أبريل 2026</p>
-                <h2><a href="#">مرحبًا بالعالم – أول مقال تجريبي</a></h2>
-                <p>هذا هو مقالي الأول على مدونة MECO. يمكنني الآن إضافة أي مقال جديد ببساطة عن طريق نسخ هذا الصندوق وتعديله.</p>
-                <span class="blog-tag">أخبار</span>
-                <span class="blog-tag">ترحيب</span>
-            </article>
-
+            <!-- Post 1 -->
             <article class="blog-card">
                 <p class="blog-date">📅 24 أبريل 2026</p>
-                <h2><a href="#">إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
-                <p>يسرنا الإعلان عن إطلاق الإصدار 1.12.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
+                <h2><a href="#">إطلاق الإصدار v1.11.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
+                <p>يسرنا الإعلان عن إطلاق الإصدار 1.11.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
                 <span class="blog-tag">إصدارات</span>
                 <span class="blog-tag">تحديثات</span>
             </article>
 
+            <!-- Post 2 -->
             <article class="blog-card">
                 <p class="blog-date">📅 15 أبريل 2026</p>
                 <h2><a href="#">تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم</a></h2>
@@ -154,6 +150,7 @@
                 <span class="blog-tag">شفافية</span>
             </article>
 
+            <!-- Post 3 -->
             <article class="blog-card">
                 <p class="blog-date">📅 1 أبريل 2026</p>
                 <h2><a href="#">انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana</a></h2>
@@ -162,6 +159,7 @@
                 <span class="blog-tag">إطلاق</span>
             </article>
 
+            <!-- Post 4 -->
             <article class="blog-card">
                 <p class="blog-date">📅 20 مارس 2026</p>
                 <h2><a href="#">إكمال التوكنوميكس وتوزيع المحافظ الخمسة</a></h2>
@@ -170,6 +168,13 @@
                 <span class="blog-tag">تأسيس</span>
             </article>
 
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="current">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>← التالي</span>
+            </div>
         </div>
     </section>
 
