@@ -45,7 +45,6 @@
 
         .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
-        /* Header */
         header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
@@ -71,7 +70,6 @@
         .btn-outline:hover { background: var(--primary); color: #FFF; }
         .theme-toggle { background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; padding: 8px; }
 
-        /* Hero */
         .hero { padding: 100px 0 80px; text-align: center; }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #FFF; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; margin-bottom: 24px; }
         .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 16px; line-height: 1.3; }
@@ -79,14 +77,12 @@
         .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 32px; }
         .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-        /* Sections */
         section { padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 48px; }
         .section-title h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; }
         .section-title h2 span { color: var(--primary); }
         .section-title p { color: var(--text-secondary); font-size: 1.05rem; }
 
-        /* Features Grid */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 24px; }
         .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; transition: transform 0.2s, box-shadow 0.2s; }
         .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(108,99,255,0.1); }
@@ -94,21 +90,22 @@
         .feature-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
         .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        /* Transparency */
         .transparency { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; text-align: center; }
         .transparency h3 { font-size: 1.4rem; margin-bottom: 16px; }
         .transparency p { color: var(--text-secondary); max-width: 700px; margin: 0 auto 24px; }
         .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .badge { background: var(--surface-light); border: 1px solid var(--border); padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
 
-        /* Footer */
+        .screenshots-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+        .screenshots-preview img { width: 100%; border-radius: 16px; border: 1px solid var(--border); transition: transform 0.2s; }
+        .screenshots-preview img:hover { transform: scale(1.02); }
+
         footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
         footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
         footer .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.2s; text-decoration: none; }
         footer .social-links a:hover { color: var(--primary); }
         footer p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        /* Mobile Nav */
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
 
         @media (max-width: 768px) {
@@ -116,6 +113,7 @@
             nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--surface); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); }
             nav.open { display: flex; }
             .mobile-menu-btn { display: block; }
+            .screenshots-preview { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -152,6 +150,7 @@
             <p>ليست مجرد محفظة. إنها منصتك المالية المتكاملة. حسابات متعددة، تبادل فوري، تخزين للعوائد، وربط آمن بتطبيقات Web3 — كل ذلك في تطبيق واحد.</p>
             <div class="hero-buttons">
                 <a href="https://monycoin.github.io/meco_wallet-app/" class="btn btn-primary">⬇️ تحميل التطبيق</a>
+                <a href="wallet.html" class="btn btn-outline">📱 جولة في التطبيق</a>
                 <a href="about.html" class="btn btn-outline">📖 استكشف المشروع</a>
             </div>
         </div>
@@ -186,6 +185,20 @@
                     <p>اربط محفظتك بمئات التطبيقات اللامركزية (dApps) عبر WalletConnect بمسح رمز QR بسيط.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- لمحة سريعة من التطبيق -->
+    <section>
+        <div class="container" style="text-align:center;">
+            <h2 style="font-size:1.8rem; margin-bottom:8px;">📱 <span style="color:var(--primary);">لمحة من التطبيق</span></h2>
+            <p style="color:var(--text-secondary); margin-bottom:32px;">تصميم عصري وتجربة لا مثيل لها. اضغط للمشاهدة.</p>
+            <div class="screenshots-preview">
+                <a href="wallet.html"><img src="assets/screenshots/Screenshot_1.png" alt="Screenshot 1" loading="lazy"></a>
+                <a href="wallet.html"><img src="assets/screenshots/Screenshot_3.png" alt="Screenshot 3" loading="lazy"></a>
+                <a href="wallet.html"><img src="assets/screenshots/Screenshot_5.png" alt="Screenshot 5" loading="lazy"></a>
+            </div>
+            <a href="wallet.html" class="btn btn-outline" style="margin-top:24px;">📱 عرض كل الصور</a>
         </div>
     </section>
 
