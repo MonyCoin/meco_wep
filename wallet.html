@@ -79,10 +79,8 @@
         .feature-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
         .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; margin-bottom: 60px; }
-        .screenshot-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; text-align: center; }
-        .screenshot-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
-        .screenshot-card p { padding: 12px; color: var(--text-secondary); font-size: 0.9rem; }
+        .screenshots { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 60px; }
+        .screenshots img { width: 100%; height: 540px; object-fit: cover; border-radius: 20px; border: 1px solid var(--border); cursor: pointer; }
 
         .download-section { text-align: center; padding: 60px 0; }
         .download-section h2 { font-size: 2rem; margin-bottom: 16px; }
@@ -176,30 +174,25 @@
         </div>
     </section>
 
-    <!-- Screenshots -->
+    <!-- Screenshots (10 صور) -->
     <section>
         <div class="container">
             <div style="text-align:center; margin-bottom:32px;">
-                <h2 style="font-size:1.8rem;">📱 <span style="color:var(--primary)">لقطات من التطبيق</span></h2>
-                <p style="color:var(--text-secondary);">واجهة عصرية، سريعة، وتدعم الوضع الداكن والفاتح</p>
+                <h2 style="font-size:1.8rem;">📱 <span style="color:var(--primary)">جولة في التطبيق</span></h2>
+                <p style="color:var(--text-secondary);">تصميم عصري، واجهة سلسة، وتجربة مستخدم لا تُنسى.</p>
             </div>
+
             <div class="screenshots">
-                <div class="screenshot-card">
-                    <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/screenshot1.png" alt="الرئيسية" onerror="this.style.display='none'">
-                    <p>🏠 الشاشة الرئيسية</p>
-                </div>
-                <div class="screenshot-card">
-                    <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/screenshot2.png" alt="إرسال" onerror="this.style.display='none'">
-                    <p>💸 شاشة الإرسال</p>
-                </div>
-                <div class="screenshot-card">
-                    <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/screenshot3.png" alt="سوق" onerror="this.style.display='none'">
-                    <p>📊 شاشة السوق</p>
-                </div>
-                <div class="screenshot-card">
-                    <img src="https://raw.githubusercontent.com/MonyCoin/meco_wallet/refs/heads/main/assets/screenshot4.png" alt="تخزين" onerror="this.style.display='none'">
-                    <p>⚡ شاشة التخزين</p>
-                </div>
+                <img src="assets/screenshots/Screenshot_1.png" alt="MECO Wallet Screenshot 1" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_2.png" alt="MECO Wallet Screenshot 2" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_3.png" alt="MECO Wallet Screenshot 3" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_4.png" alt="MECO Wallet Screenshot 4" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_5.png" alt="MECO Wallet Screenshot 5" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_6.png" alt="MECO Wallet Screenshot 6" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_7.png" alt="MECO Wallet Screenshot 7" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_8.png" alt="MECO Wallet Screenshot 8" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_9.png" alt="MECO Wallet Screenshot 9" loading="lazy" onclick="this.requestFullscreen?.()">
+                <img src="assets/screenshots/Screenshot_10.png" alt="MECO Wallet Screenshot 10" loading="lazy" onclick="this.requestFullscreen?.()">
             </div>
         </div>
     </section>
@@ -208,7 +201,7 @@
     <section class="download-section">
         <div class="container">
             <h2>حمل <span>MECO Wallet</span> الآن</h2>
-            <p>الإصدار v1.11.0 — متوفر لنظام Android. مجاني ومفتوح المصدر.</p>
+            <p>الإصدار v1.12.0 — متوفر لنظام Android. مجاني ومفتوح المصدر.</p>
             <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
                 <a href="https://monycoin.github.io/meco_wallet-app/" class="btn btn-primary btn-lg">⬇️ تحميل APK</a>
                 <a href="https://github.com/MonyCoin/meco_wallet" target="_blank" class="btn btn-outline btn-lg">🐙 الكود المصدري</a>
