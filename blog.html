@@ -77,15 +77,16 @@
         .blog-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
         .blog-tag { display: inline-block; background: var(--primary); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-left: 8px; }
 
-        .pagination { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
-        .pagination span { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); }
-        .pagination .current { background: var(--primary); color: #FFF; border-color: var(--primary); }
+        .pagination { display: flex; justify-content: center; gap: 12px; margin-top: 32px; display: none; } /* سنخفيها مؤقتاً */
 
         footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; }
         footer .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; }
         footer .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.2s; text-decoration: none; }
         footer .social-links a:hover { color: var(--primary); }
         footer p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        #blog-posts-container { min-height: 200px; }
+        .loading { text-align: center; padding: 40px; color: var(--text-secondary); }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
         @media (max-width: 768px) {
@@ -129,52 +130,10 @@
         </div>
     </section>
 
-    <!-- Blog Posts -->
+    <!-- Blog Posts (Dynamic) -->
     <section>
-        <div class="container">
-            <!-- Post 1 -->
-            <article class="blog-card">
-                <p class="blog-date">📅 24 أبريل 2026</p>
-                <h2><a href="#">إطلاق الإصدار v1.12.0 — التبادل اللامركزي الكامل والميزات الجديدة</a></h2>
-                <p>يسرنا الإعلان عن إطلاق الإصدار 1.12.0 من تطبيق MECO Wallet، والذي يتضمن تكاملاً رسمياً مع Jupiter API للتبادل اللامركزي، ودعماً لـ 16 عملة رقمية، وميزة الحسابات المتعددة، والتخزين المؤقت (Staking) بنسب عوائد تصل إلى 40% سنوياً. كما تم تحسين شاشة السوق وإضافة نظام المفضلة.</p>
-                <span class="blog-tag">إصدارات</span>
-                <span class="blog-tag">تحديثات</span>
-            </article>
-
-            <!-- Post 2 -->
-            <article class="blog-card">
-                <p class="blog-date">📅 15 أبريل 2026</p>
-                <h2><a href="#">تحديث المحافظ الرسمية للمشروع — إضافة محفظة تحصيل الرسوم</a></h2>
-                <p>في إطار الشفافية الكاملة، تم تحديث المحافظ الرسمية للمشروع. تم إضافة محفظة تحصيل الرسوم (Fee Collection Wallet) بعنوان جديد، وتحديث عناوين محفظتي التطوير والمجتمع. تم توثيق جميع العناوين في مستودع meco-token على GitHub.</p>
-                <span class="blog-tag">حوكمة</span>
-                <span class="blog-tag">شفافية</span>
-            </article>
-
-            <!-- Post 3 -->
-            <article class="blog-card">
-                <p class="blog-date">📅 1 أبريل 2026</p>
-                <h2><a href="#">انطلاق تطبيق MECO Wallet رسمياً — أول محفظة عربية على Solana</a></h2>
-                <p>بعد أشهر من التطوير والاختبار، يسر مؤسسة MonyCoin للتطوير الرقمي الإعلان عن الإطلاق الرسمي لتطبيق MECO Wallet. التطبيق متاح للتحميل بصيغة APK، ويدعم إنشاء المحافظ، الإرسال والاستلام، وعرض الأسعار الحية.</p>
-                <span class="blog-tag">إعلانات</span>
-                <span class="blog-tag">إطلاق</span>
-            </article>
-
-            <!-- Post 4 -->
-            <article class="blog-card">
-                <p class="blog-date">📅 20 مارس 2026</p>
-                <h2><a href="#">إكمال التوكنوميكس وتوزيع المحافظ الخمسة</a></h2>
-                <p>تم الانتهاء من تنفيذ خطة التوكنوميكس بشكل كامل: توزيع 1 مليار MECO على خمس محافظ مستقلة (السيولة 50%، التطوير 20%، الخزينة 10%، الفريق 10%، المجتمع 10%)، مع إغلاق صلاحيات السك والتجميد نهائياً.</p>
-                <span class="blog-tag">توكنوميكس</span>
-                <span class="blog-tag">تأسيس</span>
-            </article>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <span class="current">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>← التالي</span>
-            </div>
+        <div class="container" id="blog-posts-container">
+            <div class="loading">جاري تحميل المقالات...</div>
         </div>
     </section>
 
@@ -198,6 +157,93 @@
             const current = html.getAttribute('data-theme');
             html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
         }
+
+        // ---- تحميل المقالات من مجلد _posts ----
+        async function fetchPosts() {
+            const container = document.getElementById('blog-posts-container');
+            try {
+                // جلب محتويات مجلد _posts من GitHub API
+                const apiUrl = 'https://api.github.com/repos/MonyCoin/meco-web/contents/_posts';
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('لا يمكن الوصول إلى المجلد');
+                }
+                const files = await response.json();
+
+                // ترتيب الملفات من الأحدث للأقدم
+                files.sort((a, b) => b.name.localeCompare(a.name));
+
+                let html = '';
+                for (const file of files) {
+                    if (!file.name.endsWith('.md')) continue;
+                    
+                    const contentRes = await fetch(file.download_url);
+                    const rawText = await contentRes.text();
+
+                    // تحليل المحتوى
+                    const { title_ar, title_en, date, tags, body } = parseMarkdown(rawText);
+
+                    const postDate = new Date(date).toLocaleDateString('ar-SA', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+
+                    const tagsHtml = (tags || ['أخبار']).map(tag => 
+                        `<span class="blog-tag">${tag}</span>`
+                    ).join('');
+
+                    html += `
+                        <article class="blog-card">
+                            <p class="blog-date">📅 ${postDate}</p>
+                            <h2><a href="#">${title_ar || title_en}</a></h2>
+                            <p>${body.substring(0, 200)}...</p>
+                            ${tagsHtml}
+                        </article>
+                    `;
+                }
+
+                if (html === '') {
+                    html = '<div style="text-align:center;color:var(--text-secondary);padding:40px;">لا توجد مقالات منشورة بعد. انتظر التحديثات قريباً!</div>';
+                }
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = '<div style="text-align:center;color:var(--text-secondary);padding:40px;">تعذر تحميل المقالات. تأكد من وجود مجلد _posts.</div>';
+            }
+        }
+
+        function parseMarkdown(raw) {
+            const meta = {};
+            const lines = raw.split('\n');
+            let inHeader = false;
+            let bodyStart = 0;
+
+            if (lines[0] && lines[0].trim() === '---') {
+                inHeader = true;
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim() === '---') {
+                        bodyStart = i + 1;
+                        break;
+                    }
+                    const colonIndex = lines[i].indexOf(':');
+                    if (colonIndex > -1) {
+                        const key = lines[i].substring(0, colonIndex).trim();
+                        let value = lines[i].substring(colonIndex + 1).trim();
+                        if ((key === 'tags') && value.startsWith('[') && value.endsWith(']')) {
+                            value = value.slice(1, -1).split(',').map(s => s.trim().replace(/"/g, ''));
+                            meta[key] = value;
+                        } else {
+                            meta[key] = value.replace(/"/g, '').trim();
+                        }
+                    }
+                }
+            }
+
+            const body = bodyStart > 0 ? lines.slice(bodyStart).join('\n') : raw;
+            return { ...meta, body };
+        }
+
+        // تحميل المقالات عند فتح الصفحة
+        document.addEventListener('DOMContentLoaded', fetchPosts);
     </script>
 </body>
 </html>
